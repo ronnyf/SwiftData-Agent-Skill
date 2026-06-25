@@ -1,6 +1,6 @@
 ---
 name: swiftdata-pro
-description: Writes, reviews, and improves SwiftData code using modern APIs and best practices. Use when reading, writing, or reviewing projects that use SwiftData.
+description: Writes, reviews, and improves SwiftData code using modern APIs and best practices. Use when reading, writing, or reviewing code that uses `@Model`, `@Query`, `#Predicate`, `FetchDescriptor`, `ModelContainer` / `ModelContext`, `@Relationship` (delete rules), `@Attribute(.unique)`, SwiftData + CloudKit, or model indexing / class inheritance.
 license: MIT
 metadata:
   author: Paul Hudson
