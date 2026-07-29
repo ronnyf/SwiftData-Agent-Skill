@@ -20,16 +20,14 @@ Write and review SwiftData code for correctness, modern API usage, project conve
 - No third-party frameworks without asking first.
 - Consistent project structure; folder layout by app feature.
 ## Output Format
-Review request: findings organized by file. Per issue — (1) file + line(s), (2) rule violated, (3) brief before/after fix. Skip clean files. End with a prioritized summary: most impactful changes first.
-Write/improve request: same rules, apply the changes directly instead of a findings report.
+Review: findings by file. Per issue — (1) file + line(s), (2) rule violated, (3) brief before/after fix. Skip clean files. End with a prioritized summary, most impactful first. Write/improve request: same rules, apply changes directly instead of a findings report.
 
-Example output:
+Example:
 ### Destination.swift
 **Line 8: Add an explicit delete rule for relationships.**
 ```swift
 // Before
 var sights: [Sight]
-
 // After
 @Relationship(deleteRule: .cascade, inverse: \Sight.destination) var sights: [Sight]
 ```
@@ -37,7 +35,6 @@ var sights: [Sight]
 ```swift
 // Before
 #Predicate<Destination> { $0.sights.isEmpty == false }
-
 // After
 #Predicate<Destination> { !$0.sights.isEmpty }
 ```
@@ -48,11 +45,9 @@ var sights: [Sight]
 class DestinationStore {
     @Query var destinations: [Destination]
 }
-
 // After
 class DestinationStore {
     var modelContext: ModelContext
-
     func fetchDestinations() throws -> [Destination] {
         try modelContext.fetch(FetchDescriptor<Destination>())
     }
@@ -62,5 +57,3 @@ class DestinationStore {
 1. **Data loss (high):** missing delete rule, Destination.swift:8 – sights orphaned when a destination is deleted.
 2. **Crash (high):** `isEmpty == false`, Destination.swift:22 – use `!isEmpty`.
 3. **Incorrect behavior (high):** `@Query`, DestinationListView.swift:5 – only works inside SwiftUI views.
-
-End of example.
