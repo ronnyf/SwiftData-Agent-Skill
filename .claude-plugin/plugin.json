@@ -1,0 +1,13 @@
+{
+  "name": "swiftdata-pro",
+  "version": "1.0.0",
+  "description": "Writes, reviews, and improves SwiftData code using modern APIs and best practices.",
+  "author": { "name": "Paul Hudson" },
+  "homepage": "https://github.com/twostraws/SwiftData-Agent-Skill",
+  "repository": "https://github.com/ronnyf/SwiftData-Agent-Skill",
+  "license": "MIT",
+  "keywords": ["swiftdata", "swift", "ios", "apple", "persistence"],
+  "skills": [
+    "./swiftdata-pro"
+  ]
+}
